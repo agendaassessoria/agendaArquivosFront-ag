@@ -1,0 +1,84 @@
+<p-card header="{{title}}">
+    <form [formGroup]="form">
+
+            <div class="p-fluid grid justify-content-between mt-4 align-items-center">
+                <div class="p-field col-12 md:col-4">
+                    <span class="p-float-label">
+                        <input type="text" id="inputName" pInputText formControlName="name">
+                        <label for="inputName">Nome</label>
+                    </span>
+                    <ng-container class="alert" *ngIf="form.get('name').invalid && form.get('name').touched">
+                        <p id="text-alert" class="ng-invalid ng-dirty" *ngIf="form.get('name').errors.required">
+                            Nome do usuário é obrigatório
+                        </p>
+                        <p id="text-alert" class="ng-invalid ng-dirty" *ngIf="form.get('name').errors.minlength">
+                            Tamanho Mínimo 3 caracteres
+                        </p>
+                        <p id="text-alert" class="ng-invalid ng-dirty" *ngIf="form.get('name').errors.pattern">
+                            Nome invalido
+                        </p>
+                    </ng-container>
+                </div>
+
+                <div class="p-field col-12 md:col-4">
+                    <span class="p-float-label">
+                        <p-dropdown [options]="roles | keyvalue" optionLabel="value"
+						optionValue="key"  formControlName="role" [autoDisplayFirst]="false" ></p-dropdown>
+                        <label for="role">Role</label>
+                    </span>
+                    <ng-container class="alert" *ngIf="form.get('role').invalid && form.get('role').touched">
+                        <p id="text-alert"  class="ng-invalid ng-dirty" *ngIf="form.get('role').errors.required">
+                            Nivel do usuário é obrigatório
+                        </p>
+                    </ng-container>
+                </div>
+                <div class="p-field col-12 md:col-4">
+                    <span class="p-float-label">
+                        <input type="text" id="inputEmail" pInputText formControlName="email">
+                        <label for="inputEmail">Email</label>
+                    </span>
+                    <ng-container class="alert" *ngIf="form.get('email').touched && form.get('email').invalid" >
+                        <p id="text-alert" class="ng-invalid ng-dirty" *ngIf="form.get('email').errors.required">
+                            Email é obrigatório
+                        </p>
+                    </ng-container>
+                </div>
+                <div class="p-field col-12 md:col-6 mt-3" *ngIf="isNew">
+                    <span class="p-float-label">
+                        <input type="text" id="inputPassword" pInputText formControlName="password">
+                        <label for="inputPassword">Senha</label>
+                    </span>
+                    <ng-container class="alert" 
+                    *ngIf="form.get('password').invalid && form.get('password').touched">
+                        <p id="text-alert"  class="ng-invalid ng-dirty" *ngIf="form.get('password').errors.required">
+                            Senha é obrigatório
+                        </p>
+                        <p id="text-alert"  class="ng-invalid ng-dirty" *ngIf="form.get('password').errors.minLength">
+                            Deve ter no mínimo 6 caracteres
+                        </p>
+                    </ng-container>
+                </div>
+    
+                <div class="p-field col-12 md:col-6 mt-3" *ngIf="isNew">
+                    <span class="p-float-label">
+                        <input type="text" id="inputConfirmPassword" pInputText formControlName="confirmPassword">
+                        <label for="inputConfirmPassword">Confirmar senha</label>
+                    </span>
+                    <ng-container class="alert" *ngIf="form.get('confirmPassword').invalid && form.get('confirmPassword').touched">
+                        <p id="text-alert" class="ng-invalid ng-dirty" *ngIf="form.get('confirmPassword').errors.required">
+                            Senha é obrigatório
+                        </p>
+                        <p id="text-alert" class="ng-invalid ng-dirty" *ngIf="form.get('confirmPassword').errors.minLength">
+                            A senha não corresponde
+                        </p>
+                    </ng-container>
+                </div>
+
+        </div>
+
+        <div class="buttons-row">
+            <button type="submit" pButton [disabled]="submitted || !form.valid" (click)="salvar()">Salvar</button>
+            <button type="button" pButton (click)="voltar()">Voltar</button>
+        </div>
+    </form>
+</p-card>

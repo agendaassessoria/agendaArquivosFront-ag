@@ -1,0 +1,79 @@
+<p-card header="Lista de Usuários">
+    <p-table #dt [value]="data"  [showCurrentPageReport]="true" [totalRecords]="totalRecords"
+    [rowsPerPageOptions]="[5,10,25,50]" styleClass="p-datatable-gridlines" [paginator]="true"
+     [filterDelay]="0" [lazy]="true" (onLazyLoad)="loadFromServer($event)" 
+     currentPageReportTemplate="Exibindo linha {first} até {last} de {totalRecords} registros"
+     [globalFilterFields]="['name','erpCode','company.name']">
+        <ng-template pTemplate="caption">
+            <div class="flex justify-content-between">
+              <div class="flex justify-content-center align-items-center">
+                <div>
+                  <p-button label="Incluir" icon="pi pi-plus" (click)="incluirNovo()"></p-button>
+                </div>
+                <div>
+                  <button type="button" pButton pRipple icon="pi pi-file-pdf" (click)="exportPdf()"
+                    class="p-button-secondary p-mr-2" pTooltip="PDF" tooltipPosition="bottom"></button>
+                </div>
+              </div>
+      
+              <div class="p-input-icon-left w-6">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" class="w-full" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                  placeholder="Pesquisa global..." />
+              </div>
+            </div>
+          </ng-template>
+
+          <ng-template pTemplate="header">
+            <tr class="p-0">
+                <th pSortableColumn="name" class="p-0">
+                  <div class="flex justify-content-start align-items-center">Nome
+                  <p-sortIcon field="name"></p-sortIcon>
+                  <p-columnFilter type="text" field="name" display="menu"></p-columnFilter>
+                </div>
+                </th>
+                <th pSortableColumn="email" class="p-0">
+                  <div class="flex justify-content-start align-items-center">Email
+                    <p-sortIcon field="email"></p-sortIcon>
+                    <p-columnFilter type="text" field="email" display="menu" class="p-ml-auto justify-content-end" showButtonBar></p-columnFilter>
+                  </div>
+                </th>
+               
+        
+                <th class="p-0 w-1">
+                  <div class="flex justify-content-center align-items-center">Ações</div>
+                </th>
+              </tr>
+
+          </ng-template>
+          <ng-template pTemplate="body" let-element>
+            <tr class="p-selectable-row p-0" >
+              <td class="p-0">
+                <div class="listStyle">
+                 {{element.name}}
+                </div>
+              </td>
+      
+              <td class="p-0">
+                <div class="align-items-center listStyle">
+                  {{element.email}}
+                </div>
+              </td>
+       
+      
+              <td>
+                <div class="flex sm:flex-row-reverse justify-content-center">
+                  <button pButton type="button" icon="pi pi-trash"
+                      class="p-button-raised p-button-danger buttonStyle"(click)="excluir(element.id, element.name)" ></button>
+                  <button pButton type="button" icon="pi pi-pencil"
+                      class="p-button-raised p-button-primary buttonStyle"  (click)="editar(element.id)"></button>
+                  <button pButton type="button" icon="pi pi-eye"
+                      class="p-button-raised p-button-primary buttonStyle" (click)=visualizar(element.id)></button>
+              </div>
+            </td>
+            </tr>
+          </ng-template>
+      
+
+    </p-table>
+</p-card>

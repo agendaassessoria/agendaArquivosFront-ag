@@ -1,0 +1,49 @@
+<p-card>
+    <div class="grid">
+        <div class="col-4"></div>
+        <div class="col-4 text-center">
+            <div class="col-12">
+                <p>Bem vindo a Agenda Assessoria</p>
+                <p-image src="assets/images/InovaTWO.png" alt="Image" width="300" id="logo"></p-image>
+            </div>
+
+            <form action=""></form>
+
+            <form [formGroup]="formLogin" (ngSubmit)="onSubmit()">
+                <div class="grid p-fluid">
+                    <div class="col-12">
+
+                        <input type="text" pInputText placeholder="Nome de usuario" id="username" name="username"
+                            formControlName="email" required>
+
+                        <ng-container class="alert"
+                            *ngIf="!formLogin.get('email').valid && formLogin.get('email').touched">
+                            <p id="text-alert" style="text-align: left;">Nome de usuario é obrigatorio!</p>
+                        </ng-container>
+                    </div>
+                    <div class="col-12">
+                        <div class="p-inputgroup">
+                            <input type="password" pInputText placeholder="Senha" id="password" name="password"
+                                formControlName="password" required>
+                        </div>
+                        <ng-container class="alert"
+                            *ngIf="!formLogin.get('password').valid && formLogin.get('password').touched">
+                            <p id="text-alert" style="text-align: left;">Senha é obrigatorio!</p>
+                        </ng-container>
+                    </div>
+                    <div class="col-12">
+                        <a href="" style="padding-bottom: 20px;" id="password-reset">Esqueci minha senha</a>
+                    </div>
+                    <div class="col-12">
+                        <button pButton type="submit" label="LOG IN" class="p-button-raised" style="width: 100%;"
+                            [disabled]="!formLogin.valid"></button>
+                    </div>
+                </div>
+
+
+            </form>
+        </div>
+        <div class="col-4"></div>
+
+    </div>
+</p-card>

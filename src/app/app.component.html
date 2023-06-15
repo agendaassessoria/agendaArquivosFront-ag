@@ -1,0 +1,156 @@
+<div class="topMenu">
+        <div class="grid">
+            <div class="col-1" style="padding: 0px;">
+                <div class="flex m-2" id="abreMenu">
+                    <p-button type="button" class="mostraMenu" (click)="mostraMenu()" icon="pi pi-align-left"></p-button>
+                </div>
+            </div>
+            <div class="col-8 align-items-center" style="padding: 0px;">
+                <div class="flex m-2">
+                  <h1 style="margin: 0px;" id="logo">Agenda<a href="/" class="text-decoration: no-underline" id="two">Assessoria</a></h1>
+                    
+                </div>
+            </div>
+
+            <div class="col-3" style="padding: 0px; margin-top: 4px;">
+                <div class="flex align-items-end justify-content-end m-2" style="padding-right: 30px;" *ngIf="showMenu != false">
+                  <div #btn type="button" (click)="menu.toggle($event)" class="menuPerfil">
+                  <p-avatar icon="pi pi-user" size="large"
+                    [style]="{'background-color': 'transparent', 'color': 'rgb(63, 63, 63)', 'margin-top': '10px', 'border':'1px solid rgb(220, 220, 220)', 'width':'35px', 'height': '35px'}">
+                  </p-avatar>
+                    <p class="perfilName">{{ teste2.firstName }}</p>
+                    <p class="perfilEmail">{{ teste2.lastName }}</p>
+                  </div>
+                  <p-tieredMenu #menu [model]="itemsUser" [popup]="true"></p-tieredMenu>
+                </div>
+              </div>
+        </div>
+
+</div>
+
+<!--
+    
+-->
+<div class="flex content-trace">
+    <div class="flex-initia border-round" id="col-menuLateral">
+      <div id="menuLateral">
+  
+        <div class="accordions">
+          <div class="accordion-item">
+            <label for="accordion-1" (click)="openList(1)"><a id="item-menu-1"><i class="pi pi-pw pi-pencil"
+                  id="icon-1"></i>Cadastro</a><i id="seta-1" class="pi pi-angle-down"></i></label>
+            <div class="accordion-content" id="accordion-content-1">
+  
+              <ul class="list-group">
+                <li class="list-group-item" [routerLink]="['/pages/usuario']" routerLinkActive="active-link"><i
+                    class="pi pi-home" id="icon"></i>Empresa</li>
+                <div class="divisao"></div>
+  
+                <li class="list-group-item" [routerLink]="['/pages/usuario']" routerLinkActive="active-link"><i
+                    class="pi pi-table" id="icon"></i>Unidade</li>
+                <div class="divisao"></div>
+  
+                <!--li class="list-group-item" [routerLink]="['/tagItem/list']" routerLinkActive="active-link"><i
+                  class="pi pi-eject" id="icon"></i>Tag</li>
+                <div class="divisao"></div>
+  
+                <li class="list-group-item" [routerLink]="['/groupClass/list']" routerLinkActive="active-link"><i
+                    class="pi pi-eject" id="icon"></i>Classe de Produto</li>
+                <div class="divisao"></div>
+  
+                <li class="list-group-item" [routerLink]="['/product/list']" routerLinkActive="active-link"><i
+                    class="pi pi-box" id="icon"></i>Produto</li>
+                <div class="divisao"></div>
+                <li class="list-group-item" [routerLink]="['/pallet/list']" routerLinkActive="active-link"><i
+                    class="pi pi-bars" id="icon"></i>Pallet</li>
+                <div class="divisao"></div>
+  
+                <li class="list-group-item" [routerLink]="['/greenhouse/list']" routerLinkActive="active-link"><i
+                    class="pi pi-home" id="icon"></i>Estufa</li>
+                <div class="divisao"></div>
+  
+                <li class="list-group-item" [routerLink]="['/stand/list']" routerLinkActive="active-link"><i
+                    class="pi pi-sitemap" id="icon"></i>Bancada/Piscina</li>
+                <div class="divisao"></div>
+  
+                <li class="list-group-item" [routerLink]="['/rack/list']" routerLinkActive="active-link"><i
+                    class="pi pi-box" id="icon"></i>Rack</li-->
+                <!-- <div class="divisao"></div>
+                <li class="list-group-item" [routerLink]="['/device/list']" routerLinkActive="active-link"><i
+                    class="pi pi-android" id="icon"></i>Dispositivo</li> -->
+  
+                <!--div class="divisao"></div>
+                <li class="list-group-item" [routerLink]="['/plantDisease/list']" routerLinkActive="active-link"><i
+                    class="pi pi-android" id="icon"></i>Doença</li>
+                <div class="divisao"></div>
+                <li class="list-group-item" [routerLink]="['/variety/list']" routerLinkActive="active-link"><i
+                    class="pi pi-slack" id="icon"></i>Variedade</li>
+                <div class="divisao"></div>
+                <li class="list-group-item" [routerLink]="['/warehouseRequest/list']" routerLinkActive="active-link"><i
+                  class="pi pi-slack" id="icon"></i>Requisições</li>
+                <div class="divisao"></div>
+                <li class="list-group-item" [routerLink]="['/warehouseLocal/list']" routerLinkActive="active-link"><i
+                  class="pi pi-home" id="icon"></i>Local</li>
+              <div class="divisao"></div>
+                <li class="list-group-item" [routerLink]="['/warehouseRequest/list']" routerLinkActive="active-link"><i
+                      class="pi pi-arrow-circle-down" id="icon"></i>Requisições</li-->
+                <!--li class="list-group-item" [routerLink]="['/warehouseLocal/list']" routerLinkActive="active-link"><i
+                    class="pi pi-th-large" id="icon"></i>Local</li-->
+              </ul>
+            </div>
+          </div>
+          <!--div class="accordion-item">
+            <label for="accordion-2" (click)="openList(2)"><a id="item-menu-2"><i class="pi pi-fw pi-th-large"
+                  id="icon-2"></i>Safra</a><i id="seta-2" class="pi pi-angle-down"></i></label>
+            <div class="accordion-content" id="accordion-content-2">
+              <ul class="list-group">
+                <li class="list-group-item" [routerLink]="['/cropyear/list']" routerLinkActive="active-link"><i
+                    class="pi pi-sitemap" id="icon"></i>Safra</li>
+                <div class="divisao"></div>
+                <li class="list-group-item" [routerLink]="['/season/list']" routerLinkActive="active-link"><i
+                    class="pi pi-angle-double-right" id="icon"></i>Safra Periodo</li>
+                <div class="divisao"></div>
+                <li class="list-group-item" [routerLink]="['/task/list']" routerLinkActive="active-link"><i
+                    class="pi  pi-arrow-circle-down" id="icon"></i>Tarefas</li>
+                <div class="divisao"></div>
+                <li class="list-group-item" [routerLink]="['/technicalOrientation/list']" routerLinkActive="active-link">
+                  <i class="pi pi-arrow-up-right" id="icon"></i>Orientação Tecnica
+                </li>
+                <div class="divisao"></div>
+                <li class="list-group-item" [routerLink]="['/application/list']" routerLinkActive="active-link"><i
+                  class="pi  pi-arrow-circle-down" id="icon"></i>Aplicações</li>
+               <div class="divisao"></div>
+              </ul>
+            </div>
+          </div-->
+          <!--div class="accordion-item">
+            <label for="accordion-3" (click)="openList(3)"><a id="item-menu-3"><i class="pi pi-fw pi-th-large"
+                  id="icon-3"></i>Semeio</a><i id="seta-3" class="pi pi-angle-down"></i></label>
+            <div class="accordion-content" id="accordion-content-3">
+              <ul class="list-group">
+                <li class="list-group-item" [routerLink]="['/sowing/list']" routerLinkActive="active-link"><i
+                    class="pi pi-filter" id="icon"></i>Semeio</li>
+                <div class="divisao"></div>
+                <li class="list-group-item" [routerLink]="['/sowingLot/list']" routerLinkActive="active-link"><i
+                  class="pi pi-filter" id="icon"></i>Lote Semeio</li-->
+  
+                <!--div class="divisao"></div>
+                <li class="list-group-item" [routerLink]="['/application/list']" routerLinkActive="active-link"><i
+                    class="pi pi-android" id="icon"></i>Aplicações</li>
+              </ul>
+            </div>
+          </div-->
+        </div>
+      </div>
+    </div>
+    <div class="flex-grow-1 border-round" style="box-shadow: inset 0px 0px 15px #c3d1ee; min-height: 100vh;" id="conteudo">
+      <p-toast position="top-right" key="mainToast"></p-toast>
+  
+      <div class="m-5">
+        <div [@routeAnimations]="prepareRoute(outlet)">
+          <router-outlet #outlet="outlet"></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>
+  

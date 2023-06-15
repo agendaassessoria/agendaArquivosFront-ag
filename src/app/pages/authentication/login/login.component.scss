@@ -1,0 +1,12 @@
+
+.ng-invalid.ng-touched:not(form){
+    border: 1px solid red;
+}
+
+#text-alert{
+    color: rgb(221, 1, 1);
+    font-weight: 600;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: 5px;
+}
